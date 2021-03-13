@@ -1,10 +1,30 @@
 <template>
-  <div class="py-5">
-      <div class="container">
-          <TitleWrapper name="our" title="products" />
-          <Modal />
-          <div class="row">
-            <Product v-for="product in allProducts" v-bind:product="product" v-bind:key="product.id" />
+  <div class="product-item col-9 mx-auto col-md-6 col-lg-3 my-3">
+      <div class="card">
+          <div class="img-container p-5">
+              <router-link to="/details">
+                  <img :src="product.img" alt="Product img" class="card-img-top" />
+              </router-link>
+              <button 
+                  class="cart-btn" 
+                  @click="addCartProduct(product)"
+              >
+              +
+                  <!-- {inCart? (
+                      <p class="text-capitalize mb-0" disabled>
+                          {""}
+                          in Cart
+                      </p>
+                  ) : (<i class="fas fa-cart-plus" />)} -->
+              </button>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+              <p class="align-self-center mb-0">
+                  {{ product.title }}
+              </p>
+              <h5 class="text-blue font-italic mb-0">
+                  <span class="mr-1">$</span>{{ product.price }}
+              </h5>
           </div>
       </div>
   </div>
@@ -14,22 +34,20 @@
 // @ is an alias to /src
 // import ButtonWrapper from '../components/ButtonWrapper'
 
-import Product from '@/components/Product';
-import TitleWrapper from '@/components/TitleWrapper'
-import { mapActions, mapGetters } from 'vuex'
-import Modal from '../components/Modal'
+import { mapActions } from 'vuex'
 
 export default {
-  name: 'Home',
+  name: 'Product',
   components: {
-    Product, TitleWrapper, Modal
+      // ButtonWrapper
   },
-  computed: mapGetters(['allProducts']),
-  methods: mapActions(['fetchProducts']),
+  props: ['product'],
+  methods: { 
+    ...mapActions(['addCartProduct']),
+  },
   mounted(){
-    // this.fetchProducts('../data.js')
+      // console.log(['product']);
   }
-
 }
 </script>
 

@@ -1,32 +1,61 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Header />
+    <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  import "bootstrap/dist/css/bootstrap.min.css";
+  import Header from "./components/Header";
 
-#nav {
-  padding: 30px;
-}
+  export default {
+    name: "App",
+    components: { Header },
+  };
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+<style >
+  /* @import 'bootstrap.min.css'; */
+  :root {
+    --mainBlue: #2a2a72;
+    --lightBlue: #009ffd;
+    --mainWhite: #f3f3f3;
+    --mainDark: #232528;
+    --mainYellow: #ffa400;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  body {
+    font-family: "Oswald", sans-serif !important;
+    background: var(--mainWhite) !important;
+    color: var(--mainDark) !important;
+  }
+  .text-title {
+    font-family: "Permanent Marker", cursive;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+  }
+  .text-blue {
+    color: var(--mainBlue);
+  }
+  .text-bright {
+    color: var(--lightBlue);
+  }
+  .btn-black {
+    background: transparent;
+    border: 0.1rem solid var(--mainDark) !important;
+    text-transform: capitalize;
+    font-size: 0.8rem !important;
+    color: var(--mainDark);
+    border-radius: 0 !important;
+  }
+  .btn-black:hover {
+    background: var(--mainDark) !important;
+    color: var(--mainWhite) !important;
+  }
+  .cart-icon {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--mainYellow);
+  }
 </style>
