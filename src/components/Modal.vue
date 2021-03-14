@@ -1,37 +1,49 @@
 <template>
-  <div class="modal">
+  <div class="modal" :class="{active: cartModal.isOpen}">
     <div class="container">
-        <div class="row">
-            <div id="modal"
-                class="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
+      <div class="row">
+        <div id="modal"
+            class="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
+        >
+          <h5>Item added to the cart</h5>
+          <img :src="cartModal.img" class="img-fluid" alt="Product" />
+          <h5>{{ cartModal.title }}</h5>
+          <h5 class="text-muted">
+              price: {{ cartModal.price }}$
+          </h5>
+          <ButtonWrapper 
+            v-on:click="closeModal"
+          >
+              Store
+          </ButtonWrapper>
+          <router-link to='/cart'>
+            <ButtonWrapper type="cart"
             >
-                <h5>Item added to the cart</h5>
-                <img src={img} class="img-fluid" alt="Product" />
-                <h5>{title}</h5>
-                <h5 class="text-muted">
-                    price: ${price}
-                </h5>
-                <router-link to='/'>
-                    <ButtonContainer
-                    >
-                        Store
-                    </ButtonContainer>
-                </router-link>
-                <router-link to='/cart'>
-                    <ButtonContainer cart
-                    >
-                        go to cart
-                    </ButtonContainer>
-                </router-link>
-            </div>
+                go to cart
+            </ButtonWrapper>
+          </router-link>
         </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import ButtonWrapper from './ButtonWrapper'
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  name: 'Modal'
+  name: 'Modal',
+  components: {ButtonWrapper},
+  computed: mapGetters(['cartModal']),
+  methods: {
+    ...mapActions(['closeModal']),
+    clickHandler(){
+      this.closeMoodal()
+    }
+  }
+
 }
 </script>
 
@@ -46,6 +58,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    &.active{
+      opacity: 1;
+      visibility: visible;
+    }
     #modal{
         background: var(--mainWhite)
     }

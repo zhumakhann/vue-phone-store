@@ -1,5 +1,8 @@
 <template>
-  <button class="button-wrapper" v-bind:class="{'btn-cart': type === 'cart'}">
+  <button class="button-wrapper" v-bind:class="{'btn-cart': type === 'cart'}" 
+    
+    @click="clickHandler"
+  >
     <slot />
     <!-- hello -->
   </button>
@@ -8,7 +11,13 @@
 <script>
 export default {
   name: 'ButtonWrapper',
-  props: ['type'],
+  props: ['type', 'click'],
+  methods: {
+    clickHandler(){
+      console.log('click');
+      this.$emit('click', '')
+    } 
+  }
 }
 </script>
 
@@ -36,6 +45,7 @@ export default {
       border-color: var(--mainYellow);
       color: var(--mainYellow);
       &:hover{
+        color: var(--lightBlue);
         background: var(--mainYellow);
       }
     }

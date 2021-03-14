@@ -8,14 +8,14 @@
               <button 
                   class="cart-btn" 
                   @click="addCartProduct(product)"
+									:disabled="product.inCart"
               >
-              +
-                  <!-- {inCart? (
-                      <p class="text-capitalize mb-0" disabled>
-                          {""}
-                          in Cart
-                      </p>
-                  ) : (<i class="fas fa-cart-plus" />)} -->
+              
+									<p class="text-capitalize mb-0" v-if="product.inCart">
+											
+										in Cart
+									</p>
+                <i class="fas fa-cart-plus" v-else />
               </button>
           </div>
           <div class="card-footer d-flex justify-content-between">
