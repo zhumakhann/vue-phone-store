@@ -2,7 +2,7 @@
   <div class="product-item col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div class="card">
           <div class="img-container p-5">
-              <router-link to="/details">
+              <router-link :to="{ path: `product/${product.id}` }">
                   <img :src="product.img" alt="Product img" class="card-img-top" />
               </router-link>
               <button 

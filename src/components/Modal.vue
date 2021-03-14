@@ -11,11 +11,13 @@
           <h5 class="text-muted">
               price: {{ cartModal.price }}$
           </h5>
-          <ButtonWrapper 
-            v-on:click="closeModal"
-          >
-              Store
-          </ButtonWrapper>
+          <router-link to="/">
+            <ButtonWrapper 
+              v-on:click="closeModal"
+            >
+                Store
+            </ButtonWrapper>
+          </router-link>
           <router-link to='/cart'>
             <ButtonWrapper type="cart"
             >
