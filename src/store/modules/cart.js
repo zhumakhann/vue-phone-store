@@ -33,7 +33,6 @@ export default{
     },
     closeModal(ctx){
       ctx.commit('resetModal')
-      ctx.dispatch('countCartPrice')
     },
     cartProductQuantityHandler(ctx, item){
       const {product, type} = item;

@@ -47,7 +47,7 @@
       </div>
       <div class="col-10 mx-auto col-lg-2">
           <strong>item total: </strong>
-          {{ product.total }}
+          {{ product.total }}$
       </div>
       <div class="col-10 mx-auto col-lg-2">
           
