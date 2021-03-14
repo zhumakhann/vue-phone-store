@@ -13,7 +13,7 @@
           <div class="col-10 mx-auto col-md-6 my-3 text-capitalize">
               <h2>model: {{ detailProduct.title }}</h2>
               <h4 class="text-title text-uppercase text-muted mt-3 mb-2">
-                  made by: <span class="text-uppercase">{company}</span>
+                  made by: <span class="text-uppercase">{{ detailProduct.company }}</span>
               </h4>
               <h4 class="text-blue">
                   price: <span>$</span>{{ detailProduct.price }}

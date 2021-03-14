@@ -6,6 +6,7 @@
                 <button 
                     class="btn btn-outline-danger text-uppercase mb-3 px-5"
                     type="button"
+                    @click="this.clearCart"
                 >
                     Clear Cart
                 </button>
@@ -13,17 +14,17 @@
             <h5>
                 <span class="text-title">
                     subtotal:
-                </span> <strong>${cartSubTotal}</strong> 
+                </span> <strong>{{ cartPrice.subTotal }}$</strong> 
             </h5>
             <h5>
                 <span class="text-title">
                     tax:
-                </span> <strong>${cartTax}</strong> 
+                </span> <strong>{{ cartPrice.tax }}$</strong> 
             </h5>
             <h5>
                 <span class="text-title">
                     total:
-                </span> <strong>${cartTotal}</strong> 
+                </span> <strong>{{ cartPrice.total }}$</strong> 
             </h5>
         </div>
     </div>
@@ -31,7 +32,12 @@
 </template>
 
 <script>
+
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'CartTotals'
+  name: 'CartTotals',
+  computed: mapGetters(['cartPrice']),
+  methods: mapActions(['clearCart'])
 }
 </script>
