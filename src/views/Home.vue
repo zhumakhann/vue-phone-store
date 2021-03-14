@@ -2,9 +2,10 @@
   <div class="py-5">
       <div class="container">
           <TitleWrapper name="our" title="products" />
+              <Filters />
           <Modal />
           <div class="row">
-            <Product v-for="product in allProducts" v-bind:product="product" v-bind:key="product.id" />
+            <Product v-for="product in (filteredProducts.length > 0 ? filteredProducts : allProducts)" v-bind:product="product" v-bind:key="product.id" />
           </div>
       </div>
   </div>
@@ -18,15 +19,17 @@ import Product from '@/components/Product';
 import TitleWrapper from '@/components/TitleWrapper'
 import { mapActions, mapGetters } from 'vuex'
 import Modal from '../components/Modal'
+import Filters from '../components/Filters'
 
 export default {
   name: 'Home',
   components: {
-    Product, TitleWrapper, Modal
+    Product, TitleWrapper, Modal, Filters
   },
-  computed: mapGetters(['allProducts']),
+  computed: mapGetters(['allProducts', 'filteredProducts']),
   methods: mapActions(['fetchProducts']),
   mounted(){
+      console.log(this.allProducts);
     // this.fetchProducts('../data.js')
   }
 
