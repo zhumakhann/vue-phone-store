@@ -1,5 +1,7 @@
 # vue-phone-store
 
+https://vue-phone-store-nurlan.netlify.app/
+
 ## Project setup
 ```
 npm install
